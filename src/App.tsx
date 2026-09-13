@@ -36,7 +36,7 @@ export function App() {
         <Hero onOpenAssessment={handleOpenAssessment} />
 
         {/* Section 2: The Problem */}
-        <ProblemSection />
+        <ProblemSection onOpenAssessment={handleOpenAssessment} />
 
         {/* Section 3: How CareerIQ Works */}
         <HowItWorks />
@@ -51,7 +51,7 @@ export function App() {
         <CareerSimulator onOpenAssessment={handleOpenAssessment} />
 
         {/* Section 7: Personalized Roadmap */}
-        <CareerRoadmap />
+        <CareerRoadmap onOpenAssessment={handleOpenAssessment} />
 
         {/* Section 8: Job Matching */}
         <JobMatching onOpenAssessment={handleOpenAssessment} />

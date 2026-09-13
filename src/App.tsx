@@ -42,7 +42,7 @@ export function App() {
         <HowItWorks />
 
         {/* Section 4: AI Career Intelligence */}
-        <CareerIntelligence />
+        <CareerIntelligence onOpenAssessment={handleOpenAssessment} />
 
         {/* Section 5: Skill Gap Analysis */}
         <SkillGap />

@@ -17,6 +17,7 @@ import {
   Check,
   RotateCcw
 } from 'lucide-react';
+import { PlanExecutionModal } from './PlanExecutionModal';
 
 interface ProblemSectionProps {
   onOpenAssessment?: () => void;
@@ -27,6 +28,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenAssessment
   const [selectedBackground, setSelectedBackground] = useState<string>('Computer Science / STEM');
   const [selectedSkills, setSelectedSkills] = useState<string[]>(['Python', 'SQL', 'Git']);
   const [isSimulating, setIsSimulating] = useState<boolean>(false);
+  const [isExecutionModalOpen, setIsExecutionModalOpen] = useState<boolean>(false);
 
   const backgrounds = [
     'Computer Science / STEM',
@@ -592,8 +594,9 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenAssessment
 
                 <div className="flex items-center gap-3 w-full lg:w-auto">
                   <button
-                    onClick={onOpenAssessment}
-                    className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 shadow-xl shadow-blue-500/25 transition-all transform hover:-translate-y-0.5"
+                    onClick={() => setIsExecutionModalOpen(true)}
+                    className="w-full lg:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 shadow-xl shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:scale-[0.99]"
+                    id="execute-plan-btn"
                   >
                     <span>Execute This Implementation Plan</span>
                     <ArrowRight className="w-4 h-4" />
@@ -606,6 +609,16 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenAssessment
         </div>
 
       </div>
+
+      {/* Plan Execution Studio Modal */}
+      <PlanExecutionModal
+        isOpen={isExecutionModalOpen}
+        onClose={() => setIsExecutionModalOpen(false)}
+        background={selectedBackground}
+        selectedSkills={selectedSkills}
+        salaryBaseline={salaryBaseline}
+        salaryTarget={salaryTarget}
+      />
     </section>
   );
 };

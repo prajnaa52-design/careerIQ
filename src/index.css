@@ -88,3 +88,179 @@
       linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 }
+
+/* Login Page Specific Styles */
+
+/* OTP digit input styling */
+.otp-digit-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  border-radius: 12px;
+  background: rgba(7, 11, 20, 0.9);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  caret-color: #3B82F6;
+}
+
+.otp-digit-input:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 0 20px -5px rgba(59, 130, 246, 0.2);
+  transform: translateY(-1px);
+}
+
+.otp-digit-input.filled {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* Input focus glow effect */
+.input-glow-focus {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.input-glow-focus:focus-within {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 0 16px -4px rgba(59, 130, 246, 0.15);
+}
+
+/* Shimmer overlay for buttons */
+.shimmer-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.08) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: none;
+}
+
+.shimmer-overlay:hover::after {
+  animation: shimmer 1s forwards;
+}
+
+/* Auth card glass effect */
+.auth-card-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(11, 17, 32, 0.95) 0%,
+    rgba(15, 23, 42, 0.9) 50%,
+    rgba(11, 17, 32, 0.95) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.3s ease;
+}
+
+.auth-card-glass:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Animated gradient text */
+.animated-gradient-text {
+  background: linear-gradient(
+    135deg,
+    #60A5FA 0%,
+    #818CF8 25%,
+    #A78BFA 50%,
+    #818CF8 75%,
+    #60A5FA 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+/* Password strength bar smooth transitions */
+.strength-bar-segment {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Captcha container */
+.captcha-container {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Phone country dropdown */
+.country-dropdown {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #1E293B #070B14;
+}
+
+/* Marquee animation for trusted-by logos */
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Testimonial card transition */
+.testimonial-enter {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.testimonial-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tab indicator slide */
+.tab-indicator {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile feature strip */
+@media (max-width: 1023px) {
+  .mobile-feature-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .mobile-feature-strip::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-feature-strip > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}

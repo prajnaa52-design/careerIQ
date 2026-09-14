@@ -9,14 +9,16 @@ import {
   CheckCircle2, 
   Layers, 
   Zap,
-  Target
+  Target,
+  FileText
 } from 'lucide-react';
 
 interface HeroProps {
   onOpenAssessment: () => void;
+  onOpenScanner?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenAssessment }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenAssessment, onOpenScanner }) => {
   return (
     <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden radial-mesh-hero">
       {/* Background Decorative Ambient Glows */}
@@ -49,26 +51,29 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAssessment }) => {
 
             {/* Supporting Paragraph */}
             <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-8 max-w-xl">
-              CareerIQ uses AI to understand your skills, experience, interests, and goals — then turns them into a personalized career path.
+              Upload your resume or enter your goals. CareerIQ analyzes your skills to discover high-match career opportunities and recommend targeted courses to bridge your gaps.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-6">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-6">
+              {onOpenScanner && (
+                <button
+                  onClick={onOpenScanner}
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl font-bold text-base text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                  id="hero-scan-resume-btn"
+                >
+                  <FileText className="w-5 h-5" />
+                  <span>Scan Resume for Career & Courses</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              )}
+
               <button
                 onClick={onOpenAssessment}
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl font-semibold text-base text-white bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-semibold text-base text-slate-200 hover:text-white bg-slate-900/70 hover:bg-slate-800/90 border border-white/10 hover:border-white/20 backdrop-blur-md transition-all duration-200"
               >
-                <span>Analyze My Career</span>
-                <ArrowRight className="w-5 h-5" />
+                <span>Interactive Assessment</span>
               </button>
-
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-medium text-base text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800/80 border border-white/10 hover:border-white/20 backdrop-blur-md transition-all duration-200"
-              >
-                <Play className="w-4 h-4 fill-slate-300 text-slate-300" />
-                <span>See How It Works</span>
-              </a>
             </div>
 
             {/* Trust / Value Statement */}

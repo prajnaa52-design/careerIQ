@@ -19,11 +19,15 @@ import { ResumeScannerSection } from './components/resume/ResumeScannerSection';
 import { ResumeScannerModal } from './components/resume/ResumeScannerModal';
 import { ResumeBuilderModal } from './components/resume/ResumeBuilderModal';
 
+import { CourseSuggestionsPage } from './components/CourseSuggestionsPage';
+import { JobVacanciesPage } from './components/JobVacanciesPage';
+
 function AppContent() {
   const { authView } = useAuth();
   const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
   const [isScannerOpen, setIsScannerOpen] = useState(false);
   const [isBuilderOpen, setIsBuilderOpen] = useState(false);
+  const [selectedTargetRole, setSelectedTargetRole] = useState('data-analyst');
 
   const handleOpenAssessment = () => setIsAssessmentOpen(true);
   const handleCloseAssessment = () => setIsAssessmentOpen(false);
@@ -68,22 +72,34 @@ function AppContent() {
         {/* Section 5: Skill Gap Analysis */}
         <SkillGap />
 
-        {/* Section 6: Career Simulator */}
+        {/* Section 6: Course Suggestions Page / Section */}
+        <CourseSuggestionsPage 
+          initialRoleId={selectedTargetRole}
+          onOpenAssessment={handleOpenAssessment}
+        />
+
+        {/* Section 7: Career Simulator */}
         <CareerSimulator onOpenAssessment={handleOpenAssessment} />
 
-        {/* Section 7: Personalized Roadmap */}
+        {/* Section 8: Personalized Roadmap */}
         <CareerRoadmap onOpenAssessment={handleOpenAssessment} />
 
-        {/* Section 8: Job Matching */}
+        {/* Section 9: Job & Internship Vacancies Exchange Page */}
+        <JobVacanciesPage 
+          onOpenAssessment={handleOpenAssessment}
+          onOpenScanner={handleOpenScanner}
+        />
+
+        {/* Section 10: Job Matching */}
         <JobMatching onOpenAssessment={handleOpenAssessment} />
 
-        {/* Section 9: AI Career Assistant */}
+        {/* Section 10: AI Career Assistant */}
         <AICareerAssistant />
 
-        {/* Section 10: CareerIQ Ecosystem */}
+        {/* Section 11: CareerIQ Ecosystem */}
         <Ecosystem />
 
-        {/* Section 11: Final Call to Action */}
+        {/* Section 12: Final Call to Action */}
         <FinalCTA onOpenAssessment={handleOpenAssessment} />
       </main>
 
@@ -94,6 +110,7 @@ function AppContent() {
       <AssessmentModal 
         isOpen={isAssessmentOpen} 
         onClose={handleCloseAssessment} 
+        onSelectRole={(roleId) => setSelectedTargetRole(roleId)}
       />
 
       {/* Resume Scanner Modal */}

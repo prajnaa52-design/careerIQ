@@ -20,6 +20,7 @@ import {
 interface AssessmentModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSelectRole?: (roleId: string) => void;
 }
 
 interface CareerGoal {
@@ -33,7 +34,7 @@ interface CareerGoal {
   milestones: string[];
 }
 
-export const AssessmentModal: React.FC<AssessmentModalProps> = ({ isOpen, onClose }) => {
+export const AssessmentModal: React.FC<AssessmentModalProps> = ({ isOpen, onClose, onSelectRole }) => {
   const [step, setStep] = useState(1);
   const [targetRoleId, setTargetRoleId] = useState('data-analyst');
   const [selectedDomainFilter, setSelectedDomainFilter] = useState<'all' | 'data' | 'ai' | 'software' | 'product'>('all');
@@ -740,10 +741,22 @@ export const AssessmentModal: React.FC<AssessmentModalProps> = ({ isOpen, onClos
             <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={() => {
+                  if (onSelectRole) {
+                    onSelectRole(currentGoal.id);
+                  }
+                  onClose();
+                  const el = document.getElementById('course-suggestions');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.hash = 'course-suggestions';
+                  }
+                }}
                 className="flex-1 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-lg shadow-blue-500/25"
+                id="access-role-roadmap-btn"
               >
-                Access {currentGoal.title} Roadmap
+                Access {currentGoal.title} Roadmap & Courses
               </button>
               <button
                 type="button"

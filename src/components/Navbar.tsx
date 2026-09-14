@@ -38,6 +38,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAssessment, onOpenScanner,
   const navLinks = [
     { name: 'Features', href: '#features' },
     { name: 'Scan Resume', href: '#resume-scanner' },
+    { name: 'Course Suggestions', href: '#course-suggestions' },
+    { name: 'Jobs & Internships', href: '#job-vacancies' },
     { name: 'How It Works', href: '#how-it-works' },
     { name: 'Career Paths', href: '#career-intelligence' },
     { name: 'Simulator', href: '#simulator' },
@@ -183,6 +185,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAssessment, onOpenScanner,
                         </span>
                         <span className="text-[12px] px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-300">Live</span>
                       </button>
+
+                      <a
+                        href="#course-suggestions"
+                        onClick={() => setProfileDropdownOpen(false)}
+                        className="block px-5 py-3 text-[15px] font-medium text-slate-200 hover:text-white hover:bg-white/5 transition-colors"
+                      >
+                        Course Suggestions & Upskilling
+                      </a>
+
+                      <a
+                        href="#job-vacancies"
+                        onClick={() => setProfileDropdownOpen(false)}
+                        className="block px-5 py-3 text-[15px] font-medium text-slate-200 hover:text-white hover:bg-white/5 transition-colors"
+                      >
+                        Jobs & Internships Exchange
+                      </a>
 
                       <a
                         href="#roadmap"
